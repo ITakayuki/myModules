@@ -31,24 +31,28 @@
       <div scrollbar-css="codes">
         <div class="code">
           <div code-css="wrap">
-            <pre>
-            <h2 code-css="title">JS Code</h2>
-            <code class="language-js">
-                
+            <div code-css="buttons" code-ref="buttons">
+              <button type="button" class="is-active" code-click="clickJS" data-type="js">JS</button>
+              <button type="button" code-click="clickJS" data-type="html">HTML</button>
+              <button type="button" code-click="clickJS" data-type="css">CSS</button>
+            </div>
+            <div code-css="codeBox" code-ref="js" class="is-active">
+              <pre>
+                <h2 code-css="title">JavScript Code</h2>
+                <code class="language-js">
+                    
 import {CustomScrollbar} from &#34;@itkyk/custom-scrollbar&#34;;
 new CustomScrollbar(&#34;.scroll-contents&#34;);
     
-            </code>
-        </pre>
-          </div>
-        </div>
-        <div class="code">
-          <div code-css="wrap">
-            <pre>
-            <h2 code-css="title">HTML Code</h2>
-            <code class="language-html">
-                
-&lt;div class=&#34;.scroll-contents&#34;&gt;
+                </code>
+            </pre>
+            </div>
+            <div code-css="codeBox" code-ref="html">
+              <pre>
+                <h2 code-css="title">HTML Code</h2>
+                <code class="language-html">
+                    
+&lt;div class=&#34;scroll-contents&#34;&gt;
     &lt;div class=&#34;custom-scroll-contents&#34;&gt;
       &lt;h2&gt;Sample Text 1&lt;/h2&gt;&lt;br/&gt;
             あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら
@@ -71,16 +75,14 @@ new CustomScrollbar(&#34;.scroll-contents&#34;);
     &lt;/div&gt;
 &lt;/div&gt;
     
-            </code>
-        </pre>
-          </div>
-        </div>
-        <div class="code">
-          <div code-css="wrap">
-            <pre>
-            <h2 code-css="title">CSS Code</h2>
-            <code class="language-css">
-                
+                </code>
+            </pre>
+            </div>
+            <div code-css="codeBox" code-ref="css">
+              <pre>
+                <h2 code-css="title">CSS Code</h2>
+                <code class="language-css">
+                    
 .scroll-contents {
     position: relative;
     width: 530px;
@@ -113,8 +115,9 @@ new CustomScrollbar(&#34;.scroll-contents&#34;);
     background-color: #555;
 }
     
-            </code>
-        </pre>
+                </code>
+            </pre>
+            </div>
           </div>
         </div>
       </div>
