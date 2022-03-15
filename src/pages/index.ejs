@@ -1,0 +1,22 @@
+<%- include("../components/Organisms/LayoutTop") %>
+<section id="test">
+    <h1>Hello, World!</h1>
+    <div test-ref="reference">This is Ref</div>
+    <button type="button" test-click="clickFunc">Button</button>
+</section>
+
+<div class="component">
+    <div component-ref="com" component-click="clickFunc" data-index="1">component1</div>
+    <div component-ref="count">0</div>
+</div>
+<div class="component">
+    <div component-ref="com" component-click="clickFunc" data-index="2">component2</div>
+    <div component-ref="count">0</div>
+</div>
+<div class="component">
+    <div component-ref="com" component-click="clickFunc" data-index="3">component3</div>
+    <div component-ref="count">0</div>
+    <input type="text" component-change="changeInput" component-ref="input"/>
+</div>
+<script src="/assets/js/index.js"></script>
+<%- include("../components/Organisms/LayoutBottom") %>

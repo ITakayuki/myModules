@@ -1,0 +1,10 @@
+{
+  "preview": {
+    "charset": "UTF-8",
+    "commonParts": true
+  },
+  "production": {
+    "charset": "UTF-8",
+    "commonParts": false
+  }
+}

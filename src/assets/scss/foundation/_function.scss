@@ -1,0 +1,4 @@
+@function vw($arg, $base_width: $pcWidth){
+  $value:$arg / $base_width * 100;
+  @return $value*1vw;
+}
