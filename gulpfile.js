@@ -310,7 +310,7 @@ function browserReload() {
 function watchFiles() {
     watch("src/assets/scss/**/*.scss", scssCompile)
 
-    watch(paths.js.src, jsCompile)
+    watch("src/assets/js/**/*.ts", jsCompile)
 
     watch("src/**/*.ejs", ejsCompile)
     watch(paths.component.src, ejsCompile)

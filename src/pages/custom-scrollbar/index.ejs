@@ -1,0 +1,109 @@
+<% const viewPort = () =>{ return (`
+    <div scrollbar-ref="target" scrollbar-css="wrap">
+        <div class="custom-scroll-contents" scrollbar-css="contents">
+            <h2>Sample Text 1</h2><br/>
+            あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら
+            <br/>、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+            <br/>またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、
+            <br/>顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、
+            <br/>いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、
+            <br/>しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。
+            <h2>Sample Text 2</h2><br/>
+            あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら
+            <br/>、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+            <br/>またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、
+            <br/>顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、
+            <br/>いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、
+            <br/>しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。
+            <h2>Sample Text 3</h2><br/>
+            あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら
+            <br/>、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+            <br/>またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、
+            <br/>顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、
+            <br/>いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、
+            <br/>しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。
+        </div>
+        <div class="custom-scroll-wrap" scrollbar-css="scrollWrap">
+            <div class="custom-scroll-bar" scrollbar-css="scrollBar"></div>
+        </div>
+    </div>
+`)}%>
+<%const jsCode = () => {return `
+import {CustomScrollbar} from "@itkyk/custom-scrollbar";
+new CustomScrollbar(".scroll-contents");
+    `}
+const htmlCode = () => {return`
+<div class=".scroll-contents">
+    <div class="custom-scroll-contents">
+      <h2>Sample Text 1</h2><br/>
+            あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら
+            <br/>、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+            <br/>またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、
+            <br/>顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、
+            <br/>いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、
+            <br/>しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。
+            <h2>Sample Text 2</h2><br/>
+            あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら
+            <br/>、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+            <br/>またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、
+            <br/>顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、
+            <br/>いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、
+            <br/>しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。
+        </div>
+        <div class="custom-scroll-wrap">
+            <div class="custom-scroll-bar"></div>
+        </div>
+    </div>
+</div>
+    `}
+const cssCode = () => {return`
+.scroll-contents {
+    position: relative;
+    width: 530px;
+    padding-right: 30px;
+}
+.custom-scroll-contents {
+    width: 100%;
+    height: 500px;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.custom-scroll-wrap {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    height: 460px;
+    width: 10px;
+    background-color: #ccc;
+}
+.custom-scroll-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10px;
+    height: 50px;
+    background-color: #555;
+}
+    `}
+%>
+
+<%# HTML %>
+<%- include("../../components/Organisms/LayoutTop") %>
+<section id="scrollbar">
+    <div scrollbar-css="contentsWrap">
+        <div>
+        <%- include("../../components/Organisms/ViewPort",{children:viewPort}) %>
+        </div>
+        <div scrollbar-css="codes">
+            <%- include("../../components/Organisms/Code",{children:jsCode(),type:"js"}) %>
+            <%- include("../../components/Organisms/Code",{children:htmlCode(),type:"html"}) %>
+            <%- include("../../components/Organisms/Code",{children:cssCode(),type:"css"}) %>
+        </div>
+    </div>
+</section>
+<script src="/assets/js/scrollbar/index.js"></script>
+<%- include("../../components/Organisms/LayoutBottom") %>
