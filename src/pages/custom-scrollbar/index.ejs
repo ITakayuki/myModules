@@ -33,7 +33,7 @@ import {CustomScrollbar} from "@itkyk/custom-scrollbar";
 new CustomScrollbar(".scroll-contents");
     `}
 const htmlCode = () => {return`
-<div class=".scroll-contents">
+<div class="scroll-contents">
     <div class="custom-scroll-contents">
       <h2>Sample Text 1</h2><br/>
             あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら
@@ -99,9 +99,7 @@ const cssCode = () => {return`
         <%- include("../../components/Organisms/ViewPort",{children:viewPort}) %>
         </div>
         <div scrollbar-css="codes">
-            <%- include("../../components/Organisms/Code",{children:jsCode(),type:"js"}) %>
-            <%- include("../../components/Organisms/Code",{children:htmlCode(),type:"html"}) %>
-            <%- include("../../components/Organisms/Code",{children:cssCode(),type:"css"}) %>
+            <%- include("../../components/Organisms/Code",{javascript: jsCode(), html:htmlCode(), css: cssCode()}) %>
         </div>
     </div>
 </section>

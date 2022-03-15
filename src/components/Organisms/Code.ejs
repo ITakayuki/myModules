@@ -1,10 +1,33 @@
 <div class="code">
     <div code-css="wrap">
-        <pre>
-            <h2 code-css="title"><%= type.toUpperCase() %> Code</h2>
-            <code class="language-<%=type%>">
-                <%= children %>
-            </code>
-        </pre>
+        <div code-css="buttons" code-ref="buttons">
+            <button type="button" class="is-active" code-click="clickJS" data-type="js">JS</button>
+            <button type="button" code-click="clickJS" data-type="html">HTML</button>
+            <button type="button" code-click="clickJS" data-type="css">CSS</button>
+        </div>
+        <div code-css="codeBox" code-ref="js" class="is-active">
+            <pre>
+                <h2 code-css="title">JavScript Code</h2>
+                <code class="language-js">
+                    <%= javascript %>
+                </code>
+            </pre>
+        </div>
+        <div code-css="codeBox" code-ref="html">
+            <pre>
+                <h2 code-css="title">HTML Code</h2>
+                <code class="language-html">
+                    <%= html %>
+                </code>
+            </pre>
+        </div>
+        <div code-css="codeBox" code-ref="css">
+            <pre>
+                <h2 code-css="title">CSS Code</h2>
+                <code class="language-css">
+                    <%= css %>
+                </code>
+            </pre>
+        </div>
     </div>
 </div>
