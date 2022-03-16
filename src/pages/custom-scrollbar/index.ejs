@@ -1,3 +1,10 @@
+<%
+    const meta = {
+      title: "custom-scrollbar | @itkyk",
+        description: "how to use @itkyk/customscrolbar. sample code."
+    }
+ %>
+
 <% const viewPort = () =>{ return (`
     <div scrollbar-ref="target" scrollbar-css="wrap">
         <div class="custom-scroll-contents" scrollbar-css="contents">
@@ -101,7 +108,7 @@ const cssCode = () => {return`
 %>
 
 <%# HTML %>
-<%- include("../../components/Organisms/LayoutTop") %>
+<%- include("../../components/Organisms/LayoutTop",{meta: meta}) %>
 <section id="scrollbar">
     <div scrollbar-css="contentsWrap">
         <h1 scrollbar-css="heading">@itkyk/custom-scrollbar</h1>
