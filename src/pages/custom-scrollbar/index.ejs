@@ -1,3 +1,10 @@
+<%
+    const meta = {
+      title: "custom-scrollbar | @itkyk",
+        description: "how to use @itkyk/customscrolbar. sample code."
+    }
+ %>
+
 <% const viewPort = () =>{ return (`
     <div scrollbar-ref="target" scrollbar-css="wrap">
         <div class="custom-scroll-contents" scrollbar-css="contents">
@@ -23,14 +30,23 @@
             <br/>いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、
             <br/>しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。
         </div>
-        <div class="custom-scroll-wrap" scrollbar-css="scrollWrap">
-            <div class="custom-scroll-bar" scrollbar-css="scrollBar"></div>
+        <div class="custom-scroll-wrap" scrollbar-css="scrollWrap" scrollbar-ref="wrap">
+            <div class="custom-scroll-bar" scrollbar-css="scrollBar" scrollbar-ref="bar"></div>
         </div>
     </div>
 `)}%>
 <%const jsCode = () => {return `
 import {CustomScrollbar} from "@itkyk/custom-scrollbar";
 new CustomScrollbar(".scroll-contents");
+
+// スクロールバーの割合設定
+// set height of scrollbar
+const scrollbarWrapHeight = document.querySelector(".custom-scroll-wrap").getBoundingClientRect().height;
+const contentsWrapHeight = document.querySelector(".custom-scroll-contents").getBoundingClientRect().height;
+const contentsInnerHeight = document.querySelector(".custom-scrollbar-content-wrapper").getBoundingClientRect().height;
+const ratio = contentsWrapHeight / contentsInnerHeight;
+const scrollbar = document.querySelector(".custom-scroll-bar");
+scrollbar.style.height = \`\${scrollbarWrapHeight * ratio}px\`;
     `}
 const htmlCode = () => {return`
 <div class="scroll-contents">
@@ -59,12 +75,12 @@ const htmlCode = () => {return`
 const cssCode = () => {return`
 .scroll-contents {
     position: relative;
-    width: 530px;
-    padding-right: 30px;
+    width: 38.79941434846266vw;
+    padding-right: 0.7320644216691069vw;
 }
 .custom-scroll-contents {
-    width: 100%;
-    height: 500px;
+    width: 36.603221083455345vw;
+    height: 29.282576866764277vw;
     overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -74,9 +90,9 @@ const cssCode = () => {return`
 }
 .custom-scroll-wrap {
     position: absolute;
-    top: 20px;
-    right: 0;
-    height: 460px;
+    top: 1.4641288433382138vw;
+    right: 0.36603221083455345vw;
+    height: 26.35431918008785vw;
     width: 10px;
     background-color: #ccc;
 }
@@ -92,14 +108,18 @@ const cssCode = () => {return`
 %>
 
 <%# HTML %>
-<%- include("../../components/Organisms/LayoutTop") %>
+<%- include("../../components/Organisms/LayoutTop",{meta: meta}) %>
 <section id="scrollbar">
     <div scrollbar-css="contentsWrap">
+        <h1 scrollbar-css="heading">@itkyk/custom-scrollbar</h1>
         <div>
         <%- include("../../components/Organisms/ViewPort",{children:viewPort}) %>
         </div>
         <div scrollbar-css="codes">
             <%- include("../../components/Organisms/Code",{javascript: jsCode(), html:htmlCode(), css: cssCode()}) %>
+        </div>
+        <div>
+            <%- include("../../components/Organisms/Links",{github: "https://github.com/itkyk/custom-scrollbar", npm: "https://www.npmjs.com/package/@itkyk/custom-scrollbar"}) %>
         </div>
     </div>
 </section>

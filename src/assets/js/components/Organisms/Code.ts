@@ -1,12 +1,11 @@
 import * as View from "@itkyk/view";
 import {css} from "@emotion/css";
+import {f, v} from "../../modules/function";
 
 class Code extends View.Component {
   constructor(props) {
     super(props);
-    this.init(()=>{
-
-    })
+    this.init(()=>{})
   }
 
   clickJS = (e: Event) => {
@@ -34,7 +33,9 @@ class Code extends View.Component {
         width: "100%"
       }),
       title: css({
-        fontSize: "20px",
+        [f.pc()]: {
+          fontSize: "20px",
+        },
         marginBottom: "-50px"
       }),
       codeBox: css({
