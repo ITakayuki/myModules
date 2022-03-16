@@ -1,8 +1,10 @@
 import * as View from "@itkyk/view";
 import {CustomScrollbar} from "@itkyk/custom-scrollbar";
 import {css, injectGlobal} from "@emotion/css";
+import {f, v} from "../../modules/function";
 import Code from "../../components/Organisms/Code";
 import ViewPort from "../../components/Organisms/ViewPort";
+import Links from "../../components/Organisms/Links";
 
 class Scroller extends View.Page {
   private scrollbar: CustomScrollbar;
@@ -12,6 +14,7 @@ class Scroller extends View.Page {
     this.init(()=>{
       this.globalStyle();
       this.startScrollBar();
+      this.setScrollbarHeight();
     })
   }
 
@@ -27,49 +30,79 @@ class Scroller extends View.Page {
     })
   }
 
+  setScrollbarHeight = () => {
+    const wrapHeight = this.refs.wrap.getBoundingClientRect().height;
+    const contentsWrapHeight = this.section.querySelector(".custom-scroll-contents").getBoundingClientRect().height;
+    const contentsInnerHeight = this.section.querySelector(".custom-scrollbar-content-wrapper").getBoundingClientRect().height;
+    const percent = contentsWrapHeight / contentsInnerHeight;
+    const bar = this.refs.bar as HTMLDivElement;
+    bar.style.height = `${wrapHeight * percent}px`;
+  }
+
   style = () => {
     return {
       contentsWrap: css({
-        display: "grid",
-        gridTemplateColumns: "530px calc(100vw - 570px)",
-        h2: {
-          fontSize: "20px",
-          fontWeight: 500,
+        [f.pc()]: {
+          width: f.vw(530 + 600),
+          margin: "0 auto"
         }
       }),
       wrap: css({
         position: "relative",
-        width: "530px",
         paddingRight: "30px",
+        [f.pc()]: {
+          width: f.vw(530),
+          margin: `${f.vw(20)} auto ${f.vw(20)} auto`,
+          padding: f.vw(10),
+          border: "solid 2px #999"
+        }
       }),
       contents: css({
-        width: "500px",
-        height: "500px",
-        overflow: "scroll",
         msOverflowStyle: "none",
         scrollbarWidth: "none",
+        overflow: "scroll",
+        [f.pc()]: {
+          width: f.vw(500),
+          height:f.vw(400),
+          fontSize: f.vw(15),
+          h2: {
+            fontSize: f.vw(20),
+            fontWeight: 500,
+          }
+        },
         "&::-webkit-scrollbar": {
           display: "none"
         }
       }),
       scrollWrap: css({
         position: "absolute",
-        top: "20px",
-        right: "0",
-        height: "460px",
         width: "10px",
         backgroundColor: "#ccc",
+        [f.pc()]: {
+          top: f.vw(20),
+          right: f.vw(5),
+          height: f.vw(360),
+        }
       }),
       scrollBar: css({
         position: "absolute",
         left: 0,
         top: 0,
-        width: "10px",
-        height: "50px",
-        backgroundColor: "#555"
+        backgroundColor: "#555",
+        [f.pc()]: {
+          width: "10px",
+        }
       }),
       codes: css({
-        fontSize: "13px!important"
+        fontSize: "13px!important",
+        [f.pc()]: {
+          marginTop: f.vw(20)
+        }
+      }),
+      heading: css({
+        [f.pc()]: {
+          fontSize: f.vw(25),
+        }
       })
     }
   }
@@ -78,3 +111,4 @@ class Scroller extends View.Page {
 View.createComponent("#scrollbar", Scroller);
 Code();
 ViewPort();
+Links();

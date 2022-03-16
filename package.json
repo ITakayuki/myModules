@@ -47,6 +47,7 @@
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^9.0.0",
     "node-sass-package-importer": "^5.3.2",
+    "pathmodify": "^0.5.0",
     "typescript": "^4.6.2",
     "vinyl-source-stream": "^2.0.0"
   },

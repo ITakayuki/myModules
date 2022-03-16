@@ -24,6 +24,13 @@ const lineEncoding = require("gulp-line-ending-corrector")
 const textEncoding = require("gulp-convert-encoding")
 const streamify = require('gulp-streamify');
 const header = require("gulp-header");
+const tsify = require("tsify");
+const pathmodify = require("pathmodify");
+
+
+const tsConfig = JSON.parse(require("fs").readFileSync(__dirname + "/tsconfig.json"));
+console.log(tsConfig.compilerOptions)
+
 const defaultDist = 'dist/'
 const defaultHtdocs = "htdocs/"
 let debug = false;
@@ -112,17 +119,22 @@ const jsCompile = () => {
             const fileName = filePathArray[filePathArray.length-1];
             browserify(filePath, {debug: true})
               .transform(babelify)
-                .plugin('tsify')
-                .bundle()
-                .on("error", (error) => {
-                    console.log(error.message)
-                })
-                .on("end", () => {
-                    console.log("【Complete】js")
-                })
-                .pipe(plumber())
-                .pipe(source(fileName.replace(".ts", ".js")))
-                .pipe(gulp.dest(`${paths.js.dist}${outDir ? outDir : ""}`))
+              .plugin(pathmodify, {
+                mods: [
+                  pathmodify.mod.id('@', '/src')
+                ]
+              })
+              .plugin(tsify)
+              .bundle()
+              .on("error", (error) => {
+                  console.log(error.message)
+              })
+              .on("end", () => {
+                  console.log("【Complete】js")
+              })
+              .pipe(plumber())
+              .pipe(source(fileName.replace(".ts", ".js")))
+              .pipe(gulp.dest(`${paths.js.dist}${outDir ? outDir : ""}`))
         }
     })
 }
@@ -135,7 +147,7 @@ const jsProduction = () => {
             const filePathArray = dirPath.split("/");
             const fileName = filePathArray[filePathArray.length-1];
             browserify(filePath, {debug: false})
-                .plugin('tsify')
+                .plugin('tsify', {paths: {"@": ["./src/"]}})
                 .bundle()
                 .on("error", (error) => {
                     console.log(error.message)
